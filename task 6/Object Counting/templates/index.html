@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Real-time Object Counting</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f2f5, #d6e0f0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 2.5em;
+            text-shadow: 2px 2px #ff0000; /* Red shadow */
+        }
+
+        .video-container {
+            position: relative; /* Needed for badge */
+            background: #fff;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: inline-block;
+            border: 3px solid #007bff; /* Blue border */
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 15px;
+            display: block;
+        }
+
+        /* Badge for live object count */
+        .count-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(45deg, #ff0000, #007bff); /* Red to blue */
+            color: #fff;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 1em;
+            color: #000;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .developer {
+            color: #ff0000; /* Red name */
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+
+        .footer span {
+            background: linear-gradient(to right, #007bff, #ff0000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Real-time Object Counting</h1>
+    <div class="video-container">
+        <!-- Badge for live object count -->
+        <div class="count-badge" id="object-count">Objects: 0</div>
+
+        <!-- Video feed -->
+        <img src="{{ url_for('video_feed') }}" alt="Live Video Feed">
+    </div>
+    <div class="footer">
+        Developed by <span>Hafiz Sajid Razaq</span>
+        <div class="developer">Python | OpenCV | Flask</div>
+    </div>
+
+    <!-- Optional: JS to dynamically update object count from backend -->
+    <script>
+        // This requires backend support; for now, it's placeholder
+        // You can update badge via WebSocket or AJAX later
+        function updateCount(count) {
+            document.getElementById('object-count').innerText = "Objects: " + count;
+        }
+    </script>
+</body>
+</html>
